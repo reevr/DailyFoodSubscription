@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <h3 class="center">Manage Leaves of {{ userDetails.firstName }} {{ userDetails.lastName}}</h3>
+    <div class="row">
+        <div class="col s12 m8">
+        <table class="striped centered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each leaveList}}
+                    <tr>
+                        <td>{{  date  }}</td>
+                        <td>{{ lunch }}</td>
+                        <td>{{ dinner }}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3" class="center">No Leave applied yet</td>                        
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+        <div class="col s12 m4 center-align">
+            <h5 class="center">Manage Leave</h5>
+            <div class="container">
+                <form action="/admin/manage-guests/leaves" method="post">
+                    <input type="hidden" name="userID" value="{{ userDetails._id }}">
+                    <div class="row">
+                        <div class="input-field">
+                            <input type="date" name="date" value="{{ currentDate }}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>
+                            <input type="checkbox" name="lunch" class="filled-in checkbox" id="lunch" checked>
+                            <label for="lunch" class="black-text">Lunch</label>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <p>
+                            <input type="checkbox" name="dinner" class="filled-in checkbox" id="dinner" checked>
+                            <label for="dinner" class="black-text">Dinner</label>
+                        </p>
+                    </div>
+                    <input type="submit" value="Apply" class="btn">
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>

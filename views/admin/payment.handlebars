@@ -1,0 +1,45 @@
+<div class="container">
+    <h3 class="center">Manage Payments</h3>
+    <div class="row">
+        <div class="col s12 m10 offset-m1 center">
+            <table class="striped centered bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        {{!-- <th>Prevoius Balance</th> --}}
+                        <th>Amount to be paid</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each userList}}
+                        <tr>
+                            <td>{{ firstName }} {{ lastName }}</td>
+                            <td>{{ email }}</td>
+                            {{!-- <td>{{ previousBalance }}</td> --}}
+                            <td>{{ amount }}</td>
+                            <td>
+                                <form action="/admin/payment" method="post" class="payment-form">
+                                        <input type="hidden" name="userID" value="{{_id}}">
+                                        <div class="row">
+                                            <div class="col s6 m6">
+                                                <input type="number" name="amount" class="">
+                                            </div>
+                                            <div class="col s6 m6">
+                                                <input type="submit" name="submit" value="Save" class="btn">
+                                            </div>
+                                        </div>
+                                </form>
+                            </td>
+                        </tr>
+                    {{else}}
+                    <tr>
+                        <td colspan="4" class="flow-text">No Subscribers</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

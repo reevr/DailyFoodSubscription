@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <h3 class="center">Manage Guests</h3>
+    {{!-- <div class="row">
+        <div class="white darken-3 input-field col s12 m4 offset-m4">
+            <select class="dashboard-month-selector">
+                    <option value="" disabled selected>Change Month</option>
+                {{#each monthList}}
+                    <option value="{{ value }}">{{ text }}</option>
+                {{else}}
+                    <option value="" disabled selected>Year ends</option>
+                {{/each}}
+            </select>
+        </div>
+    </div> --}}
+    <div class="row">
+        <div class="col s12 m8">
+        <table class="striped centered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Amount</th>
+                    <th>Manage Leaves</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each guests}}
+                    <tr>
+                        <td>{{ firstName }} {{ lastName }}</td>
+                        <td>{{ email }}</td>
+                        <td>{{ amount }}</td>
+                        <td>
+                            <a href="/admin/manage-guests/leaves/{{ _id }}"><input type="button" class="btn" value="Leaves"></a>
+                        </td>
+                        <td>
+                            <form action="/admin/manage-guests?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="userID" value="{{ _id }}">
+                                <input type="submit" class="btn red" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3">No guests added</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+        <div class="col s12 m4 center-align">
+            <h5 class="center">Add Guest</h5>
+            <div class="container">
+                <form action="/admin/manage-guests" method="post" class="center-align">
+                    <div class="input-field">
+                        <input type="email" class="center holiday-input" name="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="center holiday-input" name="firstName">
+                        <label for="firstName">First Name</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="center holiday-input" name="lastName">
+                        <label for="lastName">Last Name </label>
+                    </div>
+                    <input type="submit" class="btn holiday-input" value="Add">
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</div>

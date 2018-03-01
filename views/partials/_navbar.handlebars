@@ -1,0 +1,25 @@
+<nav>
+    <div class="nav-wrapper cyan container-fluid">
+        <a href="/" class="brand-logo center">DailyFoodSubscription</a>
+        {{#if user.isAdmin}}
+        <ul id="nav-mobile" class="left hide-on-small">
+            <li><a href="/admin">Admin Dashboard</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-small">
+            <li><a href="/auth/logout">Logout</a></li>
+        </ul>
+        {{else}}
+            {{#if user }}
+                <ul id="nav-mobile" class="left hide-on-small">
+                    <li><a href="/dashboard">Dashboard</a></li>
+                </ul>
+                <ul id="nav-mobile" class="left hide-on-small">
+                    <li><a href="/leaves">Leaves</a></li>
+                </ul>
+                <ul id="nav-mobile" class="right hide-on-small">
+                    <li><a href="/auth/logout">Logout</a></li>
+                </ul>
+            {{/if}}
+        {{/if}}
+    </div>
+</nav>

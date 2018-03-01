@@ -1,0 +1,70 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col s12 m6 subscribers-list">
+            <h3>Subscriptions</h3>
+            <table class="centered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each subscribers}}
+                        <tr>
+                            <td>{{ firstName }} {{ lastName }}</td>
+                            <td>{{ email }}</td>
+                            <td>
+                                <form action="/admin/subscriptions" method="post">
+                                    <input type="hidden" name="userID" value="{{_id}}">
+                                    <button type="submit" class="btn red darken-3">Cancel Subscription</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{else}}
+                        <tr>
+                            <td colspan="3" class="flow-text">No subscribers yet.</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+        <div class="col s12 m6 approval-list">
+            <h3 class="center">Pending Approvals</h3>
+            <table class="highlight centered grey lighten-3">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each pendingApprovals}}
+                        <tr>
+                            <td>{{ firstName }} {{ lastName }}</td>
+                            <td>{{ email }}</td>
+                            <td>
+                                <form action="/admin/subscriptions/approvals" method="post" class="pending-form">
+                                    <input type="hidden" name="userID" value="{{_id}}">
+                                    <input type="hidden" name="status" value="true">
+                                    <button type="submit" class="btn">Approve</button>
+                                </form>
+                                <form action="/admin/subscriptions/approvals" method="post" class="pending-form">
+                                    <input type="hidden" name="userID" value="{{_id}}">
+                                    <input type="hidden" name="status" value="false">
+                                    <button type="submit" class="btn red darken-3">Reject</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {{else}}
+                        <tr>
+                            <td colspan="3" class="flow-text">No pending approvals</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

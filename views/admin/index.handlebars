@@ -1,0 +1,53 @@
+<br><br>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col s12 m12 center">
+        <a href="/admin/subscriptions"><button class="btn  grey">Manage Subscription</button></a>
+        <a href="/admin/payment"><button class="btn grey">Update Payment</button></a>
+        <a href="/admin/expense"><button class="btn  grey">Expenses</button></a>
+        <a href="/admin/manage-guests"><button class="btn  grey">Manage Guests</button></a>
+        <a href="/admin/holidays"><button class="btn  grey">Manage Holidays</button></a>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m3 offset-m1 center">
+            <div class="z-depth-5 card blue-grey darken-1">
+                <div class="card-image">
+                    <img src="{{user.image}}" class="circle responsive-img" alt="">
+                </div>
+                <div class="card-action">
+                    <span class="card-title white-text flow-text">{{ user.firstName }} {{ user.lastName }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m3 center">
+            <div class="card blue-grey detail-box lighten-3">
+                <div class="card-content">
+                    <span class="card-title">Pending Approvals</span>
+                    <br>
+                    <h3>{{ pendingApprovals }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m3 center">
+            <div class="card blue-grey detail-box lighten-3">
+                <div class="card-content">
+                    <span class="card-title">Monthly Expense</span>
+                    <br>
+                    <h3>{{ totalExpense }}</h3>
+                </div>
+            </div>
+        </div>
+        {{!-- <div class="col s12 m3 center">
+            <div class="card blue-grey lighten-3 detail-box">
+                <div class="card-content">
+                <span class="card-title">Amount Collected</span>
+                <br>
+                <h3> 200000 </h3>
+                </div>
+            </div>
+        </div> --}}
+    </div>
+</div>
+</div>

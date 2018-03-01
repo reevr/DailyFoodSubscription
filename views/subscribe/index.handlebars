@@ -1,0 +1,15 @@
+
+<div class="container center">
+    <br><br><br><br>
+    <h3>{{message}}</h3>
+    <br><br>
+    {{#if confirm}}
+        <h5>Would you like to subscribe?</h5>
+        <form action="/subscribe" method="post">
+            <div class="input-field">
+                <input type="submit" value="Yes, Subscribe." class="btn">
+                <input type="button" value="No" class="btn">
+            </div>
+        </form>
+    {{/if}}
+</div>

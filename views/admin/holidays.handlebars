@@ -1,0 +1,57 @@
+<div class="container-fluid">
+    <h3 class="center">Manage Holidays</h3>
+    <div class="row">
+        <div class="col s12 m4 center-align">
+            <h5 class="center">Add Holidays</h5>
+            <div class="container">
+                <form action="/admin/holidays" method="post" class="center-align">
+                    <div class="input-field">
+                        <input type="date" class="center holiday-input" name="date" value="{{ currentDate }}">
+                        <label for="date">Date</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="center holiday-input" name="title">
+                        <label for="title">Title</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" class="center holiday-input" name="description">
+                        <label for="description">Description</label>
+                    </div>
+                    <input type="submit" class="btn holiday-input" value="Add">
+                </form>
+            </div>
+        </div>
+        <div class="col s12 m8">
+        <table class="striped centered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each holidays}}
+                    <tr>
+                        <td>{{ title }}</td>
+                        <td>{{ formatDate date }}</td>
+                        <td>{{ description }}</td>
+                        <td>
+                            <form action="/admin/holidays?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="holidayId" value="{{ _id }}">
+                                <input type="submit" class="btn red" value="Delete">
+                            </form>
+                        </td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3">No holidays subsmitted</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
